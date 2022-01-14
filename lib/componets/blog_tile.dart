@@ -23,7 +23,7 @@ class BlogTile extends StatelessWidget {
             ));
       },
       child: Container(
-        margin: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 12.0),
+        margin: const EdgeInsets.fromLTRB(12.0, 12, 12.0, 0),
         child: Column(
           children: <Widget>[
             ClipRRect(
@@ -58,8 +58,11 @@ class BlogTile extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 5.0,
-            )
+              height: 12.0,
+            ),
+            const Divider(
+              color: Colors.black26,
+            ),
           ],
         ),
       ),

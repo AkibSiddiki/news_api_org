@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:news_api_org/componets/blog_tile.dart';
 import 'package:news_api_org/helper/news.dart';
 import 'package:news_api_org/model/article_model.dart';
