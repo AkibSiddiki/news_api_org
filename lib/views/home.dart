@@ -58,7 +58,6 @@ class _HomeState extends State<Home> {
         foregroundColor: Colors.lightBlue,
         centerTitle: true,
         elevation: 2.0,
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: loading_
           ? const Center(

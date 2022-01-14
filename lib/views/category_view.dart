@@ -53,7 +53,7 @@ class _CategoryViewState extends State<CategoryView> {
         backgroundColor: Colors.white,
         foregroundColor: Colors.lightBlue,
         centerTitle: true,
-        elevation: 0.0,
+        elevation: 2.0,
       ),
       body: loading_
           ? const Center(
