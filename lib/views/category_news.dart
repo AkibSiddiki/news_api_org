@@ -10,7 +10,7 @@ class ArticleNews extends StatefulWidget {
 class _ArticleNewsState extends State<ArticleNews> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
       
     );
   }
