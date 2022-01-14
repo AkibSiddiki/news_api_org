@@ -1,20 +1,19 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:news_api_org/componets/blog_tile.dart';
 import 'package:news_api_org/helper/news.dart';
 import 'package:news_api_org/model/article_model.dart';
-import 'package:news_api_org/views/category_view.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class CategoryView extends StatefulWidget {
+   String catName="";
+   CategoryView({Key? key, required this.catName}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _CategoryViewState createState() => _CategoryViewState();
 }
-
-class _HomeState extends State<Home> {
+class _CategoryViewState extends State<CategoryView> {
   var category = [
     "General",
     "Sports",
@@ -26,39 +25,35 @@ class _HomeState extends State<Home> {
   ];
   List<ArticleModel> articles = <ArticleModel>[];
   bool loading_ = true;
-
   @override
   void initState() {
-    loading_ = true;
     super.initState();
-    getNews();
+    getNews(widget.catName);
     setState(() {
       loading_ = false;
     });
   }
 
-  getNews() async {
-    News newsObj = News();
-    await newsObj.getNews();
+  getNews(String x) async {
+    CategoryNews newsObj = CategoryNews();
+    await newsObj.getNews(x);
     setState(() {
       articles = newsObj.news;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text(
-          'NEWZ',
-          style: TextStyle(color: Colors.lightBlue),
+        title: Text(
+          widget.catName,
+          style: const TextStyle(color: Colors.lightBlue),
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.lightBlue,
         centerTitle: true,
-        elevation: 2.0,
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        elevation: 0.0,
       ),
       body: loading_
           ? const Center(
@@ -77,7 +72,7 @@ class _HomeState extends State<Home> {
                           itemBuilder: (context, index) {
                             return GestureDetector(
                               onTap: () {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
