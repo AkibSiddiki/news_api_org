@@ -88,7 +88,7 @@ class _HomeState extends State<Home> {
                                 margin: const EdgeInsets.fromLTRB(
                                     12.0, 12.0, 0.0, 12),
                                 decoration: BoxDecoration(
-                                    color: Colors.lightBlue[50],
+                                    color: Colors.lightBlue[100],
                                     borderRadius: BorderRadius.circular(8.0)),
                                 child: Text(
                                   category[index],

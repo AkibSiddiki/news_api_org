@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_api_org/model/article_model.dart';
 
@@ -21,7 +22,12 @@ class ArticleView extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Image.network(article.imgUrl),
+          CachedNetworkImage(
+                imageUrl: article.imgUrl,
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    LinearProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
           const SizedBox(height: 12.0,),
           Padding(
             padding: const EdgeInsets.fromLTRB(12,0,12,0),

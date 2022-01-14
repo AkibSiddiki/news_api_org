@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_api_org/model/article_model.dart';
 import 'package:news_api_org/views/article_view.dart';
@@ -27,8 +28,14 @@ class BlogTile extends StatelessWidget {
         child: Column(
           children: <Widget>[
             ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(data.imgUrl)),
+              borderRadius: BorderRadius.circular(9),
+              child: CachedNetworkImage(
+                imageUrl: data.imgUrl,
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
+            ),
             const SizedBox(
               height: 10.0,
             ),
